@@ -1,4 +1,3 @@
-var global = (function () { return this; })();
 var Script = require( './lib/script.js' );
 
 var util = require('util');

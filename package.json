@@ -1,0 +1,37 @@
+{
+  "name": "native-vm",
+  "version": "1.0.0",
+  "description": "node rewrite of vm module ",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "ling": "jshint index.js lib/*.js test/*.js",
+    "test": "mocha --check-leaks --colors -t 10000 --reporter spec $(find test/* -name '*.test.js')"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/requirehit/native-vm.git"
+  },
+  "keywords": [
+    "requirehit",
+    "browserify",
+    "vm",
+    "native",
+    "based",
+    "cusspvz",
+    "findhit"
+  ],
+  "author": "José Moreira <jose.moreira@findhit.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/requirehit/native-vm/issues"
+  },
+  "homepage": "https://github.com/requirehit/native-vm#readme",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "jshint": "^2.8.0",
+    "mocha": "^2.3.2"
+  }
+}
