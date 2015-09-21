@@ -1,4 +1,4 @@
-## 1.0.6
+## Upcoming
 - VERSION BUMPING: Improved deploy workflow on `package.json`. Caused version
 bumped and since npm doesn't allow to purge them easily, I've decided to keep
 them. Sorry for that. :)
