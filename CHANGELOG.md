@@ -1,4 +1,4 @@
-## Upcoming
+## 1.0.3
 - Script was confusing fn's `context` with script's `sandbox`.
 - script `sandbox` is now called `scope`.
 
