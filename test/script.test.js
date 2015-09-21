@@ -5,34 +5,55 @@ var expect = chai.expect
 
 describe( "Script", function () {
 
-    function run_tests () {
-        it( "give variables a number", function () {
-            var fn = this.script.runInContext({
-                a: 1,
-                b: 3,
-                c: 6
-            })
+    function test_argument () {
+        it( "argument should be accessible", function () {
+            var fn = this.readArgument.runInContext({})
+            expect( fn( 'ola' ) ).to.be.equal( 'ola' )
+        })
+    }
 
-            expect( fn() ).to.be.equal( 10 )
+    function test_context () {
+        it( "function context should be accessible", function () {
+            var fn = this.readContext.runInContext({})
+            expect( fn.call({ _: 'ola' }) ).to.be.equal( 'ola' )
+        })
+    }
+
+    function test_vm_context () {
+        it( "vm context should be accessible", function () {
+            var fn = this.readScope.runInContext({ _: 'ola' })
+            expect( fn() ).to.be.equal( 'ola' )
         })
     }
 
     describe( "string-based code", function () {
         beforeEach(function () {
-            this.script = new Script( 'return a + b + c' )
+            this.readContext = new Script( 'this._' )
+            this.readScope = new Script( '_' )
+            this.readArgument = new Script( 'function ( _ ) { return _ }' )
         })
 
-        run_tests()
+        test_argument()
+        test_context()
+        test_vm_context()
     })
 
     describe( "function-based code", function () {
         beforeEach(function () {
-            this.script = new Script(function () {
-                return a + b + c;
+            this.readContext = new Script(function () {
+                return this._;
+            })
+            this.readArgument = new Script(function ( _ ) {
+                return _;
+            })
+            this.readScope = new Script(function () {
+                return _;
             })
         })
 
-        run_tests()
+        test_argument()
+        test_context()
+        test_vm_context()
     })
 
 })
