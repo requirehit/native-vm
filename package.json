@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "jshint index.js lib/*.js test/*.js",
-    "preversion": "if [ \"$(git diff HEAD)\" != "" ]; then echo \"You have changes on your git, commit them and rerun npm version\"; exit 1; fi; sed -i -e \"1s/## Upcoming/## $npm_package_version/\" CHANGELOG.md && git add CHANGELOG.md && git add package.json",
+    "preversion": "if [ \"$(git diff HEAD)\" != \"\" ]; then echo \"You have changes on your git, commit them and rerun npm version\"; exit 1; fi; sed -i -e \"1s/## Upcoming/## $npm_package_version/\" CHANGELOG.md && git add CHANGELOG.md && git add package.json",
     "postversion": "git push origin master && npm run git-publish && npm publish",
     "git-publish": "git tag -a $npm_package_version -m \"Check CHANGELOG.md for further details\" && git push origin --tags",
     "test": "mocha --check-leaks --colors -t 10000 --reporter spec $(find test/* -name '*.test.js')"
