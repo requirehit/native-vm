@@ -1,6 +1,6 @@
 {
   "name": "native-vm",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "node rewrite of vm module ",
   "main": "index.js",
   "directories": {
